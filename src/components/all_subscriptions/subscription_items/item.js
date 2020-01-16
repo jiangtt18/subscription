@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
+import {capitalize} from 'lodash';
+import styles from './item.module.css'
 
 const plans = ['Basic', 'Premium', 'Limited'];
 
@@ -38,7 +42,6 @@ class Item extends Component{
                 >
                     {dropdownOptions}
                 </DropdownButton>
-                <label>Plans</label>
             </div>
 
         )
@@ -53,7 +56,6 @@ class Item extends Component{
                     onChange={(e) => {onProductChange(product,{seats: e.target.value})}}
                     placeholder={productData.seats}
                 />
-                <label>Seats</label>
             </div>
         )
     };
@@ -64,19 +66,25 @@ class Item extends Component{
         let curPrice = parseInt(seats) * curPlan['cost'];
         let currency = curPlan['currency'];
         return(
-            <div>
-                {`${currency}${curPrice}`}
-            </div>
+            <div>{`${currency}${curPrice}`}</div>
         )
     };
 
     render(){
         return(
             <div>
-                {this.props.product}
-                {this.dropdown()}
-                {this.seats()}
-                {this.price()}
+            <Row >
+                <Col>{capitalize(this.props.product)}</Col>
+                <Col>{this.dropdown()}</Col>
+                <Col>{this.seats()}</Col>
+                <Col>{this.price()}</Col>
+            </Row>
+            <Row>
+                <Col>Product</Col>
+                <Col>Plan</Col>
+                <Col>Seats</Col>
+                <Col>Price</Col>
+            </Row>
             </div>
         )
     }

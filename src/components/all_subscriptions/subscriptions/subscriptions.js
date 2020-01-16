@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Card from '../../card/card';
 import {subCost} from '../../../data/stored_subscription';
 import Item from '../subscription_items/item';
@@ -30,9 +32,13 @@ class Subscriptions extends Component {
          return(
              <Card>
                  {subs}
-                 <ButtonTemplate variant={buttonVariant} onClick={onSubmit} disabled={!shouldUpdate}>
-                     <div>Update Subscription</div>
-                 </ButtonTemplate>
+                 <Row className={styles.button}>
+                    <Col>
+                    <ButtonTemplate variant={buttonVariant} onClick={onSubmit} disabled={!shouldUpdate}>
+                        <div>Update Subscription</div>
+                    </ButtonTemplate>
+                    </Col>
+                 </Row>
              </Card>
          )
     }
