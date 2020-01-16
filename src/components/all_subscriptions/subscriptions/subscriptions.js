@@ -17,7 +17,7 @@ class Subscriptions extends Component {
         const buttonVariant = shouldUpdate ?  "success" : "secondary";
         let subs = Object.keys(updatedSubs).map((product, idx) => {
             return(
-                <Card>
+                <Card key={`subscriptions-${idx}`}>
                     <Item
                         key={`product-${idx}`}
                         productCost={subCost}
