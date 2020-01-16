@@ -51,7 +51,13 @@ class Routes extends Component {
                         />
                         <Route
                             path='/subscription/summary'
-                            component={({history, match}) => <Log match={match} history={history}/>}
+                            component={({history, match}) => <Log
+                                curSubs={curSubs}
+                                updatedSubs={updatedSubs}
+                                handlers={this.handlers}
+                                match={match}
+                                history={history}
+                            />}
                         />
                     </Switch>
                 </div>
