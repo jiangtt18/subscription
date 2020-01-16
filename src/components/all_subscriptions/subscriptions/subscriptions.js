@@ -15,6 +15,7 @@ class Subscriptions extends Component {
     render(){
         const {updatedSubs, shouldUpdate, onSubmit, handlers:{onProductChange}} = this.props;
         const buttonVariant = shouldUpdate ?  "success" : "secondary";
+        if(Object.keys(updatedSubs).length === 0){return <div>No subscription yet!</div>}
         let subs = Object.keys(updatedSubs).map((product, idx) => {
             return(
                 <Card key={`subscriptions-${idx}`}>

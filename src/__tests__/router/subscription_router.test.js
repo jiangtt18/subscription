@@ -1,6 +1,6 @@
 import React from 'react';
 import Routes from '../../router/subscription_router'
-import { shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 
 describe('<Routes />', () => {
     it('should not update and disable update button', () => {
@@ -11,7 +11,6 @@ describe('<Routes />', () => {
         wrapper.instance().onProductChange('chat', updatedSubs);
         wrapper.update();
         expect(wrapper.state('shouldUpdate')).toBe(false);
-
     });
 
     it('should update and enable update button', () => {
