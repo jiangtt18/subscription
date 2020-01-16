@@ -1,10 +1,10 @@
 import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import {isEqual} from 'lodash'
-import Card from '../../card/card'
+import {isEqual} from 'lodash';
+import Card from '../../card/card';
 import LogTable from '../log_table/table';
 import ButtonTemplate from "../../buttons/button";
-import styles from './log.module.css'
+import styles from './log.module.css';
 
 export const Log = (props) => {
     const goBack = () => {
@@ -17,7 +17,7 @@ export const Log = (props) => {
     const tables = Object.keys(props.curSubs).map((type, idx) => {
         const prev = props.curSubs[type];
         const updated = props.updatedSubs[type];
-        if (shouldShow(prev, updated)){
+        if(shouldShow(prev, updated)){
             return(
                 <Card key={`logTable-${idx}`} className={styles.log}>
                     <LogTable title='Previous Subscription' data={prev}/>

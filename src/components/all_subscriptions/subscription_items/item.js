@@ -23,9 +23,11 @@ class Item extends Component{
                         eventKey={plan}
                     >
                         {plan}
-                    </Dropdown.Item>)
+                    </Dropdown.Item>
+                )
             }
         });
+
         return(
             <div>
                 <DropdownButton
@@ -38,12 +40,12 @@ class Item extends Component{
                     {dropdownOptions}
                 </DropdownButton>
             </div>
-
         )
     };
 
     seats = () => {
         const {product, productData, onProductChange} = this.props;
+
         return(
             <div>
                 <Form.Control
@@ -60,28 +62,27 @@ class Item extends Component{
         let curPlan = productCost[type][plan];
         let curPrice = parseInt(seats) * curPlan['cost'];
         let currency = curPlan['currency'];
-        return(
-            <div>{`${currency}${curPrice}`}</div>
-        )
+
+        return(<div>{`${currency}${curPrice}`}</div>)
     };
 
     render(){
-
         const seats_count = this.props.productData.seats < 2 ? 'seat' : 'seats';
+
         return(
             <div>
-            <Row >
-                <Col>{capitalize(this.props.product)}</Col>
-                <Col>{this.dropdown()}</Col>
-                <Col>{this.seats()}</Col>
-                <Col>{this.price()}</Col>
-            </Row>
-            <Row>
-                <Col>Product</Col>
-                <Col>Plan</Col>
-                <Col>{seats_count}</Col>
-                <Col>Price</Col>
-            </Row>
+                <Row >
+                    <Col>{capitalize(this.props.product)}</Col>
+                    <Col>{this.dropdown()}</Col>
+                    <Col>{this.seats()}</Col>
+                    <Col>{this.price()}</Col>
+                </Row>
+                <Row>
+                    <Col>Product</Col>
+                    <Col>Plan</Col>
+                    <Col>{seats_count}</Col>
+                    <Col>Price</Col>
+                </Row>
             </div>
         )
     }

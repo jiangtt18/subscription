@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Subscription from '../App';
-import {Log} from '../components/subscription_log/log/log'
+import {Log} from '../components/subscription_log/log/log';
 import {curSubs} from "../data/stored_subscription";
 
 class Routes extends Component {

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import classNames from 'classnames';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from '../../card/card';
@@ -9,12 +8,12 @@ import ButtonTemplate from '../../buttons/button';
 import styles from './subscription.module.css'
 
 class Subscriptions extends Component {
-     constructor(props){
+    constructor(props){
         super(props);
-
     }
+
     render(){
-        const { updatedSubs, shouldUpdate, onSubmit, handlers:{onProductChange}} = this.props;
+        const {updatedSubs, shouldUpdate, onSubmit, handlers:{onProductChange}} = this.props;
         const buttonVariant = shouldUpdate ?  "success" : "secondary";
         let subs = Object.keys(updatedSubs).map((product, idx) => {
             return(
@@ -34,9 +33,9 @@ class Subscriptions extends Component {
                  {subs}
                  <Row className={styles.button}>
                     <Col>
-                    <ButtonTemplate variant={buttonVariant} onClick={onSubmit} disabled={!shouldUpdate}>
-                        <div>Update Subscription</div>
-                    </ButtonTemplate>
+                        <ButtonTemplate variant={buttonVariant} onClick={onSubmit} disabled={!shouldUpdate}>
+                            <div>Update Subscription</div>
+                        </ButtonTemplate>
                     </Col>
                  </Row>
              </Card>

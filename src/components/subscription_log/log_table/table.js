@@ -15,9 +15,9 @@ const LogTable = ({title, data}) => {
     return(
         <Table borderless className={styles.table}>
             <thead>
-            <tr>
-                <th className={styles.center} colSpan="12" >{title}</th>
-            </tr>
+                <tr>
+                    <th className={styles.center} colSpan="12" >{title}</th>
+                </tr>
             </thead>
             <tbody>{tableBody}</tbody>
         </Table>
