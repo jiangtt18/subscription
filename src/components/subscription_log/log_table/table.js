@@ -1,8 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import styles from './table.module.css';
 
 const LogTable = ({title, data}) => {
-    // debugger;
     const tableBody = Object.keys(data).map((label, idx) => {
         return(
             <tr key={`logTable-${idx}`}>
@@ -13,10 +13,10 @@ const LogTable = ({title, data}) => {
     });
 
     return(
-        <Table borderless responsive>
+        <Table borderless className={styles.table}>
             <thead>
             <tr>
-                <th colSpan="8" >{title}</th>
+                <th className={styles.center} colSpan="12" >{title}</th>
             </tr>
             </thead>
             <tbody>{tableBody}</tbody>
