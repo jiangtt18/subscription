@@ -20,7 +20,7 @@ class Subscription extends Component {
     render(){
         return (
             <Jumbotron fluid>
-                <Subscriptions onSubmit={this.onSubmit}/>
+                <Subscriptions onSubmit={this.onSubmit} {...this.props}/>
             </Jumbotron>
         );
     }
