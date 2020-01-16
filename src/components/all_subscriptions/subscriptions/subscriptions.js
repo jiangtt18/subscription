@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import classNames from 'classnames';
 import Card from '../../card/card';
-import Button from 'react-bootstrap/Button'
-import {subCost} from '../../../data/stored_subscription'
-import Item from '../subscription_items/item'
+import {subCost} from '../../../data/stored_subscription';
+import Item from '../subscription_items/item';
+import ButtonTemplate from '../../buttons/button';
+import styles from './subscription.module.css'
 
 class Subscriptions extends Component {
      constructor(props){
@@ -28,7 +30,9 @@ class Subscriptions extends Component {
          return(
              <Card>
                  {subs}
-                 <Button variant={buttonVariant} onClick={onSubmit}>Update Subscription</Button>
+                 <ButtonTemplate variant={buttonVariant} onClick={onSubmit} disabled={!shouldUpdate}>
+                     <div>Update Subscription</div>
+                 </ButtonTemplate>
              </Card>
          )
     }
