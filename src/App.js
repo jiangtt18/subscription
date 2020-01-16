@@ -4,10 +4,23 @@ import Subscriptions from "./components/all_subscriptions/subscriptions/subscrip
 import './App.css';
 
 class Subscription extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    handleBack = () => {
+        this.props.history.goBack();
+        this.setState({showLog: false})
+    };
+
+    onSubmit = () => {
+       this.props.history.push('/subscription/summary')
+    };
+
     render(){
         return (
             <Jumbotron fluid>
-                <Subscriptions/>
+                <Subscriptions onSubmit={this.onSubmit}/>
             </Jumbotron>
         );
     }

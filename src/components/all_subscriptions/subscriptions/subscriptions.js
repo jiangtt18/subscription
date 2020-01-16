@@ -15,7 +15,6 @@ class Subscriptions extends Component {
     }
 
     onProductChange = (type, newValues) => {
-         debugger;
          let oldValues = this.state.updatedSubs[type];
          const {plan, seats} = oldValues;
          const {plan: newPlan = plan, seats: newSeats = seats } = newValues;
@@ -31,6 +30,7 @@ class Subscriptions extends Component {
 
     render(){
         const {updatedSubs, shouldUpdate} = this.state;
+        const {onSubmit} = this.props;
         const buttonVariant = shouldUpdate ?  "success" : "secondary";
         let subs = Object.keys(updatedSubs).map((product, idx) => {
             return(
@@ -48,7 +48,7 @@ class Subscriptions extends Component {
          return(
              <Card>
                  {subs}
-                 <Button variant={buttonVariant}>Update Subscription</Button>
+                 <Button variant={buttonVariant} onClick={onSubmit}>Update Subscription</Button>
              </Card>
          )
     }
