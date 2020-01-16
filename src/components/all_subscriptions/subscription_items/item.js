@@ -5,17 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import {capitalize} from 'lodash';
-import styles from './item.module.css'
 
 const plans = ['Basic', 'Premium', 'Limited'];
 
 class Item extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            plan:'',
-            seats:0,
-        }
     }
 
     dropdown = () => {
@@ -71,6 +66,8 @@ class Item extends Component{
     };
 
     render(){
+
+        const seats_count = this.props.productData.seats < 2 ? 'seat' : 'seats';
         return(
             <div>
             <Row >
@@ -82,7 +79,7 @@ class Item extends Component{
             <Row>
                 <Col>Product</Col>
                 <Col>Plan</Col>
-                <Col>Seats</Col>
+                <Col>{seats_count}</Col>
                 <Col>Price</Col>
             </Row>
             </div>
