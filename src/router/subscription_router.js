@@ -7,20 +7,28 @@ import {curSubs} from "../data/stored_subscription";
 class Routes extends Component {
     constructor(props){
         super(props);
+
         this.state = {
             curSubs: curSubs,
             updatedSubs: curSubs,
             shouldUpdate: false,
         };
 
-        this.handlers = {onProductChange: this.onProductChange}
+        this.handlers = {
+            onProductChange: this.onProductChange,
+            updatePrevState: this.updatePrevState
+        }
     }
+
+    updatePrevState = () => {
+        this.setState({curSubs: this.state.updatedSubs, shouldUpdate: false})
+    };
 
     onProductChange = (type, newValues) => {
         let oldValues = this.state.updatedSubs[type];
         const {plan, seats} = oldValues;
         const {plan: newPlan = plan, seats: newSeats = seats } = newValues;
-        if(newPlan === plan && seats === newSeats) {
+        if(newPlan === plan && parseInt(seats) === parseInt(newSeats)) {
             this.setState({shouldUpdate: false});
             return;
         }

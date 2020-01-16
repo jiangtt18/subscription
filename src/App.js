@@ -8,11 +8,6 @@ class Subscription extends Component {
         super(props);
     }
 
-    handleBack = () => {
-        this.props.history.goBack();
-        this.setState({showLog: false})
-    };
-
     onSubmit = () => {
        this.props.history.push('/subscription/summary')
     };
