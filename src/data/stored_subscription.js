@@ -1,6 +1,6 @@
 export const curSubs = {
-    chat: {type: 'chat', plan: 'basic', name: 'Basic', seats: 2},
-    mailing: {type: 'mailing', plan: 'basic', name: 'Basic', seats: 2}
+    chat: {type: 'chat', plan: 'basic', name: 'Basic', seats: 2, price: 100},
+    mailing: {type: 'mailing', plan: 'basic', name: 'Basic', seats: 2, price: 200}
 };
 
 export const subCost = {

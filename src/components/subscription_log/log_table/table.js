@@ -1,16 +1,20 @@
 import React from 'react';
 import classNames from 'classnames';
+import {capitalize} from 'lodash';
 import Table from 'react-bootstrap/Table';
 import styles from './table.module.css';
 
 const LogTable = ({title, data, diff}) => {
-    const tableBody = Object.keys(data).map((label, idx) => {
-        return(
-            <tr key={`logTable-${idx}`}>
-                <td colSpan="3">{label}</td>
-                <td className={classNames({[styles.green]: diff.includes(label)})}>{`${data[label]}`}</td>
-            </tr>
-        )
+    const tableBody = Object.keys(data)
+        .filter(label => label !== 'name')
+        .map((label, idx) => {
+            let value = `${capitalize(data[label])}`;
+            return(
+                <tr key={`logTable-${idx}`}>
+                    <td colSpan="3">{capitalize(label)}</td>
+                    <td className={classNames({[styles.green]: diff.includes(label)})}>{value}</td>
+                </tr>
+            )
     });
 
     return(

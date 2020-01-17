@@ -15,18 +15,19 @@ class Item extends Component{
 
     dropdown = () => {
         const {product, productData, onProductChange} = this.props;
-        const dropdownOptions = plans.map((plan, idx) => {
-            if (plan !== productData.name){
-                return(
-                    <Dropdown.Item
-                        key={`${idx}-dropdown`}
-                        eventKey={plan}
-                    >
-                        {plan}
-                    </Dropdown.Item>
-                )
-            }
-        });
+        const dropdownOptions =
+            plans
+                .filter(plan => plan !== productData.name)
+                .map((plan, idx) => {
+                    return (
+                        <Dropdown.Item
+                            key={`${idx}-dropdown`}
+                            eventKey={plan}
+                        >
+                            {plan}
+                        </Dropdown.Item>
+                    )
+                });
 
         return(
             <div>
