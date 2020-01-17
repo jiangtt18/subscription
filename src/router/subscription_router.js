@@ -29,7 +29,6 @@ class Routes extends Component {
         let originalValue = this.state.curSubs[type];
         let prevValues = this.state.updatedSubs[type];
         let updatedValues = {...prevValues, ...newValues};
-        console.log(originalValue, prevValues, updatedValues);
         let shouldUpdate = !(isEqual(originalValue, updatedValues));
         let newSubs = Object.assign({}, this.state.updatedSubs);
         newSubs[type] = updatedValues;
