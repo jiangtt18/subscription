@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import {isEqual} from 'lodash';
-import Subscription from '../App';
+import Subscription from '../components/App';
 import {Log} from '../components/subscription_log/log/log';
 import {curSubs} from "../data/stored_subscription";
 
@@ -35,7 +35,7 @@ class Routes extends Component {
         this.setState({shouldUpdate: shouldUpdate , updatedSubs: newSubs})
     };
 
-    render() {
+    render(){
         const {curSubs, updatedSubs, shouldUpdate} = this.state;
         return (
             <Router>
@@ -67,7 +67,6 @@ class Routes extends Component {
                     </Switch>
                 </div>
             </Router>
-
         );
     }
 };

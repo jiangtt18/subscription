@@ -16,4 +16,5 @@ export const subCost = {
     }
 };
 
+// to sort multiple products
 export const product_priority = {chat:0, mailing:1};
