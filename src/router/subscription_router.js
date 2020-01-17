@@ -25,12 +25,15 @@ class Routes extends Component {
     };
 
     onProductChange = (type, newValues) => {
+
         let oldValues = this.state.curSubs[type];
+        let prevValues = this.state.updatedSubs[type];
         const {plan, seats} = oldValues;
-        const {plan: newPlan = plan, seats: newSeats = seats } = newValues;
-        let shouldUpdate = !(newPlan === plan && parseInt(seats) === parseInt(newSeats))
+        const {plan: newPlan = prevValues.plan, seats: newSeats = prevValues.seats } = newValues;
+        let shouldUpdate = !(newPlan === plan && parseInt(seats) === parseInt(newSeats));
         const newSubs = Object.assign({}, this.state.updatedSubs);
-        newSubs[type] = {...oldValues, ...newValues};
+
+        newSubs[type] = {...prevValues, ...newValues};
         this.setState({shouldUpdate: shouldUpdate , updatedSubs: newSubs})
     };
 
