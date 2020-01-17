@@ -25,7 +25,6 @@ class Routes extends Component {
     };
 
     onProductChange = (type, newValues) => {
-
         let oldValues = this.state.curSubs[type];
         let prevValues = this.state.updatedSubs[type];
         const {plan, seats} = oldValues;
