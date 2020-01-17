@@ -19,4 +19,12 @@ open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Notes
 This is a purely frontend project (no backend and database)
 Data is mocked through JSON rather than call API end points
+
+# Future Directions
+Better input Form Validation. Currently input is restricted to non negative number.
+Set a max val for seats
+Format price in a more readable way.($200,000,000,000)
+Enhance CSS (textoverflow...)
+Enhance UI/UX by providing better error message + polishing empty state components
+
     
