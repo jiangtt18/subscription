@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import {isEqual} from 'lodash';
 import Subscription from '../App';
 import {Log} from '../components/subscription_log/log/log';
 import {curSubs} from "../data/stored_subscription";
@@ -25,14 +26,13 @@ class Routes extends Component {
     };
 
     onProductChange = (type, newValues) => {
-        let oldValues = this.state.curSubs[type];
+        let originalValue = this.state.curSubs[type];
         let prevValues = this.state.updatedSubs[type];
-        const {plan, seats} = oldValues;
-        const {plan: newPlan = prevValues.plan, seats: newSeats = prevValues.seats } = newValues;
-        let shouldUpdate = !(newPlan === plan && parseInt(seats) === parseInt(newSeats));
-        const newSubs = Object.assign({}, this.state.updatedSubs);
-
-        newSubs[type] = {...prevValues, ...newValues};
+        let updatedValues = {...prevValues, ...newValues};
+        console.log(originalValue, prevValues, updatedValues);
+        let shouldUpdate = !(isEqual(originalValue, updatedValues));
+        let newSubs = Object.assign({}, this.state.updatedSubs);
+        newSubs[type] = updatedValues;
         this.setState({shouldUpdate: shouldUpdate , updatedSubs: newSubs})
     };
 

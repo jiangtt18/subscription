@@ -50,7 +50,7 @@ class Item extends Component{
             <div>
                 <Form.Control
                     type="number" min="0"
-                    onBlur={(e) => {onProductChange(product,{seats: e.target.value})}}
+                    onBlur={(e) => {onProductChange(product,{seats: parseInt(e.target.value || productData.seats)})}}
                     placeholder={productData.seats}
                 />
             </div>
