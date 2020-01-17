@@ -51,7 +51,14 @@ class Item extends Component{
             <div>
                 <Form.Control
                     type="number" min="0"
-                    onBlur={(e) => {onProductChange(product,{seats: parseInt(e.target.value || productData.seats)})}}
+                    onBlur={(e) => {
+                        let val = parseInt(e.target.value || productData.seats);
+                        // todo: minimum validation check below. will implement better form validation later
+                        if (val < 0) {
+                            val = productData.seats;
+                        }
+                        onProductChange(product, {seats: val})
+                    }}
                     placeholder={productData.seats}
                 />
             </div>
@@ -68,7 +75,7 @@ class Item extends Component{
     };
 
     render(){
-        const seats_count = this.props.productData.seats < 2 ? 'seat' : 'seats';
+        const seats_count = this.props.productData.seats < 2 ? 'Seat' : 'Seats';
 
         return(
             <div>
