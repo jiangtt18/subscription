@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import {isEqual} from 'lodash';
 import Subscription from '../components/App';
-import {Log} from '../components/subscription_log/log/log';
+import Log from '../components/subscription_log/log/log';
 import {curSubs} from "../data/stored_subscription";
 
 class Routes extends Component {
@@ -13,12 +13,23 @@ class Routes extends Component {
             curSubs: curSubs,
             updatedSubs: curSubs,
             shouldUpdate: false,
+            prevSubs:{},
         };
 
         this.handlers = {
             onProductChange: this.onProductChange,
             updatePrevState: this.updatePrevState
         }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('here');
+        console.log('pre', prevState);
+        console.log('next', nextProps);
+        return {
+            prevSubs: prevState
+        }
+
     }
 
     updatePrevState = () => {
@@ -36,7 +47,7 @@ class Routes extends Component {
     };
 
     render(){
-        const {curSubs, updatedSubs, shouldUpdate} = this.state;
+        const {curSubs, updatedSubs, shouldUpdate, prevSubs} = this.state;
         return (
             <Router>
                 <div>
@@ -45,7 +56,7 @@ class Routes extends Component {
                         <Route
                             path='/subscription/dashboard'
                             component={({history, match}) => <Subscription
-                                                                curSubs={curSubs}
+                                                                curSubs={prevSubs}
                                                                 updatedSubs={updatedSubs}
                                                                 shouldUpdate={shouldUpdate}
                                                                 handlers={this.handlers}
