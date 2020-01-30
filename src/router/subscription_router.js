@@ -13,7 +13,7 @@ class Routes extends Component {
             curSubs: curSubs,
             updatedSubs: curSubs,
             shouldUpdate: false,
-            prevSubs:{},
+            prevSubs:curSubs,
         };
 
         this.handlers = {
@@ -24,7 +24,7 @@ class Routes extends Component {
 
     static getDerivedStateFromProps(nextProps, prevState) {
         return {
-            prevSubs: prevState
+            prevSubs: prevState.updatedSubs
         }
 
     }
@@ -34,11 +34,10 @@ class Routes extends Component {
     };
 
     onProductChange = (type, newValues) => {
-        let originalValue = this.state.curSubs[type];
-        let prevValues = this.state.updatedSubs[type];
+        let prevValues = this.state.prevSubs[type];
         let updatedValues = {...prevValues, ...newValues};
-        let shouldUpdate = !(isEqual(originalValue, updatedValues));
-        let newSubs = Object.assign({}, this.state.updatedSubs);
+        let shouldUpdate = !(isEqual(prevValues, updatedValues));
+        let newSubs = Object.assign({}, this.state.prevSubs);
         newSubs[type] = updatedValues;
         this.setState({shouldUpdate: shouldUpdate , updatedSubs: newSubs})
     };
