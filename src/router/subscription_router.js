@@ -23,9 +23,6 @@ class Routes extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('here');
-        console.log('pre', prevState);
-        console.log('next', nextProps);
         return {
             prevSubs: prevState
         }
